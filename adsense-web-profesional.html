@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía completa para monetizar tu web con Google AdSense. Aprende estrategias reales, evita errores y maximiza tus ingresos online.">
+  <meta name="keywords" content="google adsense, monetización web, ingresos pasivos, CPC, RPM, publicidad digital">
+  <meta name="author" content="AdSense Pro Guide">
+  <meta property="og:title" content="AdSense Pro Guide — Monetiza Tu Web con Google AdSense">
+  <meta property="og:description" content="Guía profesional y completa para generar ingresos reales con Google AdSense.">
+  <title>AdSense Pro Guide — Monetiza Tu Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       VARIABLES Y RESET
+    ═══════════════════════════════════════════════════ */
+    :root {
+      --navy:        #0d1b2a;
+      --navy-mid:    #1a3050;
+      --navy-light:  #243d5c;
+      --gold:        #c8a84b;
+      --gold-light:  #e8c96a;
+      --cream:       #faf8f4;
+      --cream-dark:  #f0ece4;
+      --white:       #ffffff;
+      --text:        #1a1a2e;
+      --text-muted:  #5a6a7e;
+      --text-light:  #8899aa;
+      --success:     #1a6b4a;
+      --success-bg:  #e8f4f0;
+      --danger:      #b84a00;
+      --danger-bg:   #fff3ec;
+      --border:      rgba(13,27,42,0.12);
+      --shadow-sm:   0 2px 8px rgba(13,27,42,0.08);
+      --shadow-md:   0 8px 32px rgba(13,27,42,0.12);
+      --shadow-lg:   0 20px 60px rgba(13,27,42,0.18);
+      --radius:      10px;
+      --radius-lg:   18px;
+      --font-display:'Fraunces', Georgia, serif;
+      --font-body:   'DM Sans', system-ui, sans-serif;
+      --nav-h:       68px;
+      --max-w:       1160px;
+      --transition:  all 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: var(--font-body); border: none; }
+
+    /* ═══════════════════════════════════════════════════
+       UTILIDADES
+    ═══════════════════════════════════════════════════ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .section { padding: 5rem 0; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+    }
+    .badge-gold  { background: rgba(200,168,75,0.15); color: var(--gold); }
+    .badge-navy  { background: rgba(13,27,42,0.08); color: var(--navy-mid); }
+    .badge-green { background: var(--success-bg); color: var(--success); }
+    .section-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 700; line-height: 1.18; color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 600px; margin-bottom: 2.5rem;
+    }
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ═══════════════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); z-index: 1000;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      transition: var(--transition);
+    }
+    #nav.scrolled { background: rgba(13,27,42,0.99); box-shadow: var(--shadow-md); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+      color: var(--white); display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .logo-icon {
+      width: 32px; height: 32px; background: var(--gold); border-radius: 7px;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500;
+      padding: 0.4rem 0.85rem; border-radius: 7px; transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; font-weight: 600 !important; padding: 0.45rem 1.1rem !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px; padding: 6px;
+      background: transparent; border: none;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+    .nav-mobile { display: none; }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-mobile {
+        position: fixed; top: var(--nav-h); left: 0; right: 0;
+        background: rgba(13,27,42,0.98); backdrop-filter: blur(12px);
+        padding: 1.5rem 1.25rem 2rem; border-bottom: 1px solid rgba(200,168,75,0.2);
+        flex-direction: column; gap: 0.25rem; z-index: 999;
+      }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile a { color: rgba(255,255,255,0.8); font-size: 1rem; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 500; }
+      .nav-mobile a:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       AD PLACEHOLDERS
+       DECISIÓN: Cada espacio publicitario está etiquetado
+       como "PUBLICIDAD" — cumplimiento AdSense obligatorio.
+    ═══════════════════════════════════════════════════ */
+    .ad-slot {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 1.5px dashed rgba(13,27,42,0.2); border-radius: var(--radius);
+      background: rgba(13,27,42,0.03); position: relative; overflow: hidden;
+    }
+    .ad-slot::before {
+      content: "PUBLICIDAD"; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; color: var(--text-light);
+    }
+    .ad-slot .ad-dims { font-size: 0.78rem; font-weight: 600; color: var(--text-light); margin-top: 0.5rem; }
+    .ad-slot .ad-hint { font-size: 0.7rem; color: var(--text-light); margin-top: 4px; text-align: center; padding: 0 1rem; }
+    .ad-728x90  { width: 100%; max-width: 728px; height: 90px; }
+    .ad-300x250 { width: 300px; height: 250px; }
+    .ad-300x600 { width: 300px; height: 600px; }
+    .ad-responsive { width: 100%; min-height: 90px; }
+    .ad-center { margin: 0 auto; }
+    .ad-zone-top { background: var(--cream-dark); padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+    .in-content-ad { margin: 2rem 0; padding: 1.25rem; background: var(--cream-dark); border-radius: var(--radius-lg); border: 1px solid var(--border); text-align: center; }
+    .in-content-ad .ad-label-text { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem; }
+
+    /* ═══════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh; padding-top: calc(var(--nav-h) + 3rem);
+      background: var(--navy); position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,168,75,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 80% at 10% 80%, rgba(26,48,80,0.6) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(200,168,75,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(200,168,75,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
+    .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .eyebrow-text { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 900; line-height: 1.06; color: var(--white); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.68); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.75; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      font-size: 0.95rem; font-weight: 700; padding: 0.85rem 2rem;
+      border-radius: var(--radius); transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(200,168,75,0.35); display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,168,75,0.45); }
+    .btn-ghost {
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-size: 0.95rem; font-weight: 500; padding: 0.85rem 2rem;
+      border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition); display: inline-block;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: var(--white); border-color: rgba(255,255,255,0.4); }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; font-weight: 500; }
+    @media (max-width: 640px) { .hero-stats { flex-wrap: wrap; gap: 1.25rem; } .stat-num { font-size: 1.6rem; } }
+
+    /* ═══════════════════════════════════════════════════
+       FEATURES
+    ═══════════════════════════════════════════════════ */
+    #intro { background: var(--white); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .feature-card {
+      background: var(--cream); border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem; border: 1px solid var(--border);
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .feature-card::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; width: 0; background: var(--gold); transition: width 0.35s ease; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .feature-card:hover::after { width: 100%; }
+    .feature-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+    .feature-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ═══════════════════════════════════════════════════
+       GUIDE
+    ═══════════════════════════════════════════════════ */
+    #guide { background: var(--cream); }
+    .guide-layout { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
+    @media (max-width: 1024px) { .guide-layout { grid-template-columns: 1fr; } .guide-sidebar { display: none; } }
+    .guide-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .guide-tab {
+      background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+      padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted); transition: var(--transition); cursor: pointer;
+    }
+    .guide-tab:hover, .guide-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .guide-panel { display: none; }
+    .guide-panel.active { display: block; }
+    .guide-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.5rem; }
+    .guide-card-header { background: var(--navy); padding: 1.25rem 1.75rem; display: flex; align-items: center; gap: 1rem; }
+    .guide-card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(200,168,75,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .guide-card-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .guide-card-body { padding: 1.75rem; }
+    .guide-card-body p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .guide-card-body p:last-child { margin-bottom: 0; }
+    .metric-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .metric-table th { text-align: left; padding: 0.6rem 0.875rem; background: var(--navy); color: var(--white); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.05em; }
+    .metric-table th:first-child { border-radius: 8px 0 0 0; } .metric-table th:last-child { border-radius: 0 8px 0 0; }
+    .metric-table td { padding: 0.65rem 0.875rem; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .metric-table tr:nth-child(even) td { background: var(--cream); }
+    .metric-table tr:last-child td { border-bottom: none; }
+    .metric-name { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1rem; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+    .mini-card { background: var(--cream); border-radius: var(--radius); padding: 1.1rem; border: 1px solid var(--border); }
+    .mini-card.good { border-left: 3px solid var(--success); background: var(--success-bg); }
+    .mini-card.bad  { border-left: 3px solid var(--danger);  background: var(--danger-bg); }
+    .mini-card-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .mini-card.good .mini-card-title { color: var(--success); }
+    .mini-card.bad  .mini-card-title { color: var(--danger); }
+    .mini-card ul li { font-size: 0.875rem; color: var(--text); padding: 3px 0; padding-left: 1rem; position: relative; }
+    .mini-card ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; }
+    .mini-card.good ul li::before { background: var(--success); }
+    .mini-card.bad  ul li::before { background: var(--danger); }
+    .checklist { margin-top: 0.75rem; }
+    .checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .checklist li:last-child { border-bottom: none; }
+    .check-ico { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; margin-top: 1px; }
+    .check-ico.ok   { background: var(--success-bg); color: var(--success); }
+    .check-ico.warn { background: var(--danger-bg);  color: var(--danger); }
+    .callout { border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout.info  { background: var(--success-bg); border-left: 3px solid var(--success); }
+    .callout.warn  { background: var(--danger-bg);  border-left: 3px solid var(--danger); }
+    .callout strong { display: block; margin-bottom: 4px; }
+    .callout.info strong { color: var(--success); }
+    .callout.warn strong { color: var(--danger); }
+    .ad-diagram { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; font-size: 0.78rem; }
+    .diag-row { padding: 8px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .diag-row:last-child { border-bottom: none; }
+    .diag-row.header-row { background: var(--cream); color: var(--text-muted); }
+    .diag-row.ad-row  { background: rgba(200,168,75,0.1); color: var(--navy); font-weight: 600; }
+    .diag-row.content { background: var(--white); color: var(--text-muted); height: 30px; }
+    .diag-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .diag-dot.gold { background: var(--gold); } .diag-dot.gray { background: var(--text-light); }
+    .traffic-bars { margin-top: 0.75rem; }
+    .tbar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; font-size: 0.85rem; }
+    .tbar-label { min-width: 130px; font-weight: 600; color: var(--navy); }
+    .tbar-track { flex: 1; height: 8px; background: var(--cream); border-radius: 4px; overflow: hidden; }
+    .tbar-fill  { height: 100%; border-radius: 4px; background: var(--gold); }
+    .tbar-val   { min-width: 80px; text-align: right; color: var(--text-muted); font-size: 0.8rem; }
+    .guide-sidebar { position: sticky; top: calc(var(--nav-h) + 1.5rem); }
+    .sidebar-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.5rem; }
+    .sidebar-card-header { background: var(--navy); padding: 1rem 1.25rem; }
+    .sidebar-card-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--white); }
+    .sidebar-card-body { padding: 1.25rem; }
+    .sidebar-nav li { border-bottom: 1px solid var(--border); }
+    .sidebar-nav li:last-child { border-bottom: none; }
+    .sidebar-nav a { display: flex; align-items: center; gap: 8px; padding: 0.65rem 0; font-size: 0.875rem; color: var(--text-muted); font-weight: 500; transition: var(--transition); }
+    .sidebar-nav a:hover { color: var(--navy); }
+
+    /* ═══════════════════════════════════════════════════
+       METRICS
+    ═══════════════════════════════════════════════════ */
+    #metrics { background: var(--navy); }
+    #metrics .section-title { color: var(--white); }
+    #metrics .section-subtitle { color: rgba(255,255,255,0.55); }
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .metric-card { background: rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 1.75rem; border: 1px solid rgba(255,255,255,0.1); transition: var(--transition); }
+    .metric-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+    .metric-card-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .metric-card-value { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 0.5rem; }
+    .metric-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .metric-card-range { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.78rem; }
+    .range-label { color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .range-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+    .range-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+
+    /* ═══════════════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════════════ */
+    #contact { background: var(--white); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 800px) { .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .contact-info-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info-text { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .contact-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .contact-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .form-control {
+      width: 100%; padding: 0.7rem 0.95rem; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.95rem; font-family: var(--font-body);
+      background: var(--white); color: var(--text); transition: var(--transition);
+    }
+    .form-control:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,168,75,0.15); }
+    .form-control.invalid { border-color: var(--danger); }
+    .field-error { font-size: 0.78rem; color: var(--danger); margin-top: 4px; min-height: 1rem; display: block; }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      width: 100%; background: var(--navy); color: var(--white);
+      font-size: 0.95rem; font-weight: 700; padding: 0.85rem;
+      border-radius: var(--radius); transition: var(--transition); box-shadow: var(--shadow-sm);
+    }
+    .btn-submit:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    #form-success { display: none; margin-top: 1rem; padding: 1rem 1.25rem; background: var(--success-bg); border-radius: var(--radius); border-left: 3px solid var(--success); font-size: 0.9rem; }
+    #form-success strong { color: var(--success); display: block; margin-bottom: 4px; }
+
+    /* ═══════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════ */
+    #footer { background: var(--navy); color: rgba(255,255,255,0.6); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding: 4rem 0 2.5rem; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 0 1.5rem; } }
+    .footer-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--gold); }
+    .footer-desc { font-size: 0.875rem; line-height: 1.75; max-width: 300px; }
+    .footer-col-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
+    .footer-links li { margin-bottom: 0.6rem; }
+    .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.55); transition: var(--transition); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom-text { font-size: 0.8rem; }
+    .footer-legal-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-legal-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); transition: var(--transition); }
+    .footer-legal-links a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════
+       COOKIE BANNER
+    ═══════════════════════════════════════════════════ */
+    #cookieBanner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
+      background: var(--navy); border-top: 1px solid rgba(200,168,75,0.3);
+      padding: 1.25rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.3);
+    }
+    #cookieBanner.visible { transform: translateY(0); }
+    .cookie-inner { max-width: var(--max-w); margin: 0 auto; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .cookie-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .cookie-text { flex: 1; min-width: 200px; }
+    .cookie-text p { font-size: 0.875rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .cookie-text strong { color: var(--white); }
+    .cookie-actions { display: flex; gap: 0.75rem; flex-shrink: 0; flex-wrap: wrap; }
+    .cookie-accept { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.875rem; padding: 0.55rem 1.35rem; border-radius: 7px; border: none; cursor: pointer; transition: var(--transition); }
+    .cookie-accept:hover { background: var(--gold-light); }
+    .cookie-reject { background: transparent; color: rgba(255,255,255,0.6); font-size: 0.875rem; padding: 0.55rem 1rem; border-radius: 7px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: var(--transition); }
+    .cookie-reject:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+    .cookie-link { color: var(--gold); text-decoration: underline; font-size: 0.875rem; cursor: pointer; }
+
+    /* ═══════════════════════════════════════════════════
+       MODALS
+    ═══════════════════════════════════════════════════ */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--white); border-radius: var(--radius-lg); max-width: 640px; width: 100%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); }
+    .modal-header { background: var(--navy); padding: 1.25rem 1.75rem; display: flex; align-items: center; justify-content: space-between; }
+    .modal-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--white); }
+    .modal-close { background: rgba(255,255,255,0.1); border: none; color: var(--white); width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+    .modal-close:hover { background: rgba(255,255,255,0.2); }
+    .modal-body { padding: 1.75rem; overflow-y: auto; }
+    .modal-body h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin: 1.25rem 0 0.5rem; }
+    .modal-body h3:first-child { margin-top: 0; }
+    .modal-body p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+
+    /* Scroll to top */
+    #scrollTop {
+      position: fixed; bottom: 2rem; right: 1.5rem; z-index: 999;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: var(--white); font-size: 1.1rem;
+      border: none; cursor: pointer; opacity: 0; pointer-events: none;
+      transition: var(--transition); box-shadow: var(--shadow-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #scrollTop.visible { opacity: 1; pointer-events: all; }
+    #scrollTop:hover { background: var(--navy-mid); transform: translateY(-3px); }
+    @media (max-width: 640px) { .ad-728x90 { height: 60px; } .footer-bottom { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Navegación principal">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="AdSense Pro Guide">
+        <div class="logo-icon" aria-hidden="true">💡</div>
+        AdSense<span>Pro</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#intro">Fundamentos</a></li>
+        <li><a href="#guide">Guía</a></li>
+        <li><a href="#metrics">Métricas</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a href="#guide" class="nav-cta">Empezar ahora</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div id="navMobile" class="nav-mobile">
+    <a href="#intro">Fundamentos</a>
+    <a href="#guide">Guía completa</a>
+    <a href="#metrics">Métricas</a>
+    <a href="#contact">Contacto</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot" aria-hidden="true"></div>
+        <span class="eyebrow-text">Guía definitiva 2025</span>
+      </div>
+      <h1 class="hero-title" id="hero-title">
+        Monetiza tu web<br>con <em>Google AdSense</em><br>de forma profesional
+      </h1>
+      <p class="hero-subtitle">
+        Desde los fundamentos hasta estrategias avanzadas: aprende a generar ingresos reales y sostenibles cumpliendo estrictamente las políticas de Google.
+      </p>
+      <div class="hero-actions">
+        <a href="#guide" class="btn-primary">Ver guía completa</a>
+        <a href="#metrics" class="btn-ghost">Entender las métricas</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">9</div>
+          <div class="stat-label">Secciones completas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">68%</div>
+          <div class="stat-label">Ingresos para el editor</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">$0</div>
+          <div class="stat-label">Coste de entrada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     AD LEADERBOARD — ABOVE THE FOLD
+     DECISIÓN: Posición 1 de mayor RPM. Inmediatamente
+     tras el hero. El usuario ha procesado el CTA principal.
+     NORMA: Etiqueta "PUBLICIDAD" visible siempre.
+════════════════════════════════════════════════════ -->
+<div class="ad-zone-top" role="complementary" aria-label="Espacio publicitario">
+  <div class="container">
+    <!--
+      ╔═══════════════════════════════════════════════════════╗
+      ║  REEMPLAZA ESTE BLOQUE CON TU CÓDIGO REAL DE ADSENSE ║
+      ║                                                       ║
+      ║  <ins class="adsbygoogle"                            ║
+      ║       style="display:inline-block;                   ║
+      ║              width:728px;height:90px"                ║
+      ║       data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"      ║
+      ║       data-ad-slot="XXXXXXXXXX"></ins>               ║
+      ║  <script>                                            ║
+      ║    (adsbygoogle = window.adsbygoogle || []).push({}); ║
+      ║  </script>                                           ║
+      ╚═══════════════════════════════════════════════════════╝
+    -->
+    <div class="ad-slot ad-728x90 ad-center">
+      <span class="ad-dims">728×90 — Leaderboard</span>
+      <span class="ad-hint">Posición above-the-fold — Máxima viewability</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     INTRO / FEATURES
+════════════════════════════════════════════════════ -->
+<section id="intro" class="section" aria-labelledby="intro-title">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Por qué AdSense</div>
+      <h2 class="section-title" id="intro-title">La plataforma de monetización más accesible del mundo</h2>
+      <p class="section-subtitle">Google AdSense gestiona más de 2 millones de sitios web. Aprende a unirte correctamente y maximizar cada visita.</p>
+    </div>
+    <div class="features-grid">
+      <article class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">💰</div>
+        <div class="feature-title">Ingresos pasivos reales</div>
+        <p class="feature-text">Una vez configurado, AdSense genera ingresos 24/7. Con RPM entre $3 y $20+ según el nicho. Tu contenido trabaja mientras duermes.</p>
+      </article>
+      <article class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon" aria-hidden="true">🛡️</div>
+        <div class="feature-title">Sin inversión inicial</div>
+        <p class="feature-text">Cuenta gratuita, sin costes de setup. Solo necesitas un sitio web aprobado, contenido de calidad y cumplir las políticas del programa.</p>
+      </article>
+      <article class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon" aria-hidden="true">📊</div>
+        <div class="feature-title">Subasta en tiempo real</div>
+        <p class="feature-text">Cada impresión se subasta en milisegundos. El modelo RTB garantiza que siempre cobras el máximo disponible por tu inventario publicitario.</p>
+      </article>
+      <article class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <div class="feature-title">Multiplataforma</div>
+        <p class="feature-text">Desktop, móvil y tablet. AdSense selecciona automáticamente el formato más rentable para cada dispositivo y contexto de navegación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     GUIDE SECTION
+════════════════════════════════════════════════════ -->
+<section id="guide" class="section" aria-labelledby="guide-title">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Guía completa</div>
+      <h2 class="section-title" id="guide-title">Todo lo que necesitas saber</h2>
+      <p class="section-subtitle">Navega por las secciones. De fundamentos a estrategias avanzadas, todo en un mismo lugar.</p>
+    </div>
+
+    <div class="guide-layout">
+      <!-- MAIN CONTENT -->
+      <div class="guide-main">
+        <!-- TABS -->
+        <div class="guide-tabs" role="tablist">
+          <button class="guide-tab active" role="tab" aria-selected="true"  id="tab-fundamentos"  onclick="switchTab('fundamentos')">Fundamentos</button>
+          <button class="guide-tab"        role="tab" aria-selected="false" id="tab-preparacion"  onclick="switchTab('preparacion')">Preparación</button>
+          <button class="guide-tab"        role="tab" aria-selected="false" id="tab-optimizacion" onclick="switchTab('optimizacion')">Optimización</button>
+          <button class="guide-tab"        role="tab" aria-selected="false" id="tab-trafico"      onclick="switchTab('trafico')">Tráfico</button>
+          <button class="guide-tab"        role="tab" aria-selected="false" id="tab-politicas"    onclick="switchTab('politicas')">Políticas ⚠️</button>
+          <button class="guide-tab"        role="tab" aria-selected="false" id="tab-avanzado"     onclick="switchTab('avanzado')">Avanzado</button>
+        </div>
+
+        <!-- PANEL: FUNDAMENTOS -->
+        <div id="panel-fundamentos" class="guide-panel active">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">💡</div>
+              <h3 class="guide-card-title">Qué es AdSense y cómo funciona</h3>
+            </div>
+            <div class="guide-card-body">
+              <p>Google AdSense subasta el espacio publicitario de tu sitio en tiempo real (RTB). Cada carga de página desencadena una subasta instantánea entre anunciantes. Tú recibes el <strong>68% de los ingresos</strong> generados.</p>
+              <table class="metric-table" style="margin-top:1.25rem">
+                <thead><tr><th>Métrica</th><th>Significado</th><th>Rango orientativo</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="metric-name">CPC</span></td><td>Coste por clic — lo que cobras por clic</td><td>$0.02 – $15+</td></tr>
+                  <tr><td><span class="metric-name">CPM</span></td><td>Coste por mil impresiones</td><td>$0.50 – $15</td></tr>
+                  <tr><td><span class="metric-name">RPM</span></td><td>Ingresos por 1.000 páginas vistas</td><td>$2 – $20+</td></tr>
+                  <tr><td><span class="metric-name">CTR</span></td><td>% de impresiones que generan clic</td><td>0.5% – 3%</td></tr>
+                </tbody>
+              </table>
+              <div class="callout info">
+                <strong>Fórmula RPM</strong>
+                RPM = (Ingresos totales ÷ Páginas vistas) × 1.000 | Ejemplo: $50 ÷ 10.000 visitas × 1.000 = RPM de $5
+              </div>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">📢</div>
+              <h3 class="guide-card-title">Tipos de anuncios disponibles</h3>
+            </div>
+            <div class="guide-card-body">
+              <div class="two-col">
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Display Responsivo</div><ul><li>AdSense elige el tamaño óptimo</li><li>Soporta imagen, HTML5 y vídeo</li><li>El más recomendado para empezar</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">In-Article</div><ul><li>Entre párrafos del artículo</li><li>CTR 2-3× superior al sidebar</li><li>Aspecto nativo y natural</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">In-Feed</div><ul><li>Integrado en listados de contenido</li><li>Alta tasa de engagement</li><li>Se adapta al diseño del feed</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Anuncio Anclado</div><ul><li>Sticky footer móvil nativo</li><li>+20-40% ingresos extra</li><li>Activable desde el panel</li></ul></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /fundamentos -->
+
+        <!-- IN-CONTENT AD — entre panel 1 y siguiente navegación
+             DECISIÓN: Solo visible en fundamentos. Alta atención al cambiar de sección. -->
+        <div class="in-content-ad" id="inContentAd1" aria-label="Espacio publicitario">
+          <div class="ad-label-text">Publicidad</div>
+          <!--
+            ADSENSE — In-Content 336×280
+            <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                 data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+          -->
+          <div class="ad-slot ad-300x250 ad-center">
+            <span class="ad-dims">336×280 — In-Content</span>
+            <span class="ad-hint">Alta viewability — Usuario comprometido con el contenido</span>
+          </div>
+        </div>
+
+        <!-- PANEL: PREPARACIÓN -->
+        <div id="panel-preparacion" class="guide-panel">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🌐</div>
+              <h3 class="guide-card-title">Características de una web aprobable</h3>
+            </div>
+            <div class="guide-card-body">
+              <ul class="checklist">
+                <li><span class="check-ico ok">✓</span><span>Dominio propio con SSL activo — HTTPS obligatorio</span></li>
+                <li><span class="check-ico ok">✓</span><span>Mínimo 15-20 artículos originales de +800 palabras</span></li>
+                <li><span class="check-ico ok">✓</span><span>Política de privacidad que mencione cookies y publicidad de terceros</span></li>
+                <li><span class="check-ico ok">✓</span><span>Página de contacto funcional con formulario o email visible</span></li>
+                <li><span class="check-ico ok">✓</span><span>Diseño responsive y carga en menos de 4 segundos</span></li>
+                <li><span class="check-ico warn">✗</span><span>Sin contenido duplicado, parafraseado ni generado en masa sin edición humana</span></li>
+                <li><span class="check-ico warn">✗</span><span>Sin historial de spam, penalizaciones Google o malware en el dominio</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🎯</div>
+              <h3 class="guide-card-title">Nichos: rentables vs problemáticos</h3>
+            </div>
+            <div class="guide-card-body">
+              <div class="two-col">
+                <div class="mini-card good">
+                  <div class="mini-card-title">✓ Alta rentabilidad</div>
+                  <ul>
+                    <li>Finanzas personales e inversión</li>
+                    <li>Seguros y servicios legales</li>
+                    <li>Salud y medicina</li>
+                    <li>Software B2B y tecnología</li>
+                    <li>Inmobiliaria y préstamos</li>
+                    <li>Educación online</li>
+                  </ul>
+                </div>
+                <div class="mini-card bad">
+                  <div class="mini-card-title">✗ Problemáticos</div>
+                  <ul>
+                    <li>Entretenimiento y memes</li>
+                    <li>Contenido político extremo</li>
+                    <li>Piratería o descargas ilegales</li>
+                    <li>Contenido adulto</li>
+                    <li>Recetas (muy saturado)</li>
+                    <li>Noticias virales sin profundidad</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">⚠️</div>
+              <h3 class="guide-card-title">Errores comunes que causan rechazo</h3>
+            </div>
+            <div class="guide-card-body">
+              <div class="callout warn">
+                <strong>Los 5 errores más frecuentes</strong>
+                1. Contenido insuficiente: menos de 15 páginas con texto real y valioso.<br>
+                2. Sin política de privacidad o sin mención a publicidad de terceros.<br>
+                3. Dominio de menos de 2 semanas con solo 5 posts básicos.<br>
+                4. Tráfico comprado, bots o intercambio de visitas artificiales.<br>
+                5. Contenido restringido: alcohol, drogas, armas, adultos, violencia.
+              </div>
+            </div>
+          </div>
+        </div><!-- /preparacion -->
+
+        <!-- PANEL: OPTIMIZACIÓN -->
+        <div id="panel-optimizacion" class="guide-panel">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">📍</div>
+              <h3 class="guide-card-title">Posicionamiento óptimo de anuncios</h3>
+            </div>
+            <div class="guide-card-body">
+              <p>La posición determina la viewability y el CTR. Estos son los layouts con mayor rendimiento comprobado:</p>
+              <div class="ad-diagram" style="margin-top:1rem">
+                <div class="diag-row header-row"><div class="diag-dot gray"></div> Header + Menú de navegación</div>
+                <div class="diag-row ad-row"><div class="diag-dot gold"></div> 📢 Leaderboard 728×90 — Alta visibilidad, primer impacto</div>
+                <div class="diag-row content"></div>
+                <div class="diag-row content"></div>
+                <div class="diag-row ad-row"><div class="diag-dot gold"></div> 📢 In-Article 336×280 — CTR 2-3× superior al sidebar</div>
+                <div class="diag-row content"></div>
+                <div class="diag-row content"></div>
+                <div class="diag-row ad-row" style="background:rgba(184,74,0,0.08)"><div class="diag-dot" style="background:var(--danger)"></div> ⚠ Solo si el artículo supera 1.500 palabras</div>
+                <div class="diag-row content"></div>
+                <div class="diag-row ad-row"><div class="diag-dot gold"></div> 📢 Post-contenido — Usuario satisfecho, mayor CTR</div>
+                <div class="diag-row header-row"><div class="diag-dot gray"></div> Footer</div>
+              </div>
+              <div class="callout warn" style="margin-top:1rem">
+                <strong>Regla de oro</strong>
+                Nunca más de 3 anuncios visibles simultáneamente. No coloques anuncios junto a botones de descarga ni imágenes clickables — los clics accidentales son tráfico inválido.
+              </div>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">📈</div>
+              <h3 class="guide-card-title">Estrategias para maximizar el RPM</h3>
+            </div>
+            <div class="guide-card-body">
+              <ul class="checklist">
+                <li><span class="check-ico ok">✓</span><span><strong>Viewability:</strong> Anuncios en el área visible, no al fondo de páginas muy largas.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>Velocidad:</strong> LCP &lt; 2.5s. Cada segundo de mejora puede subir el RPM un 3-5%.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>Geolocalización:</strong> Tráfico de EEUU/UK tiene CPC 3-10× mayor que España.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>Keywords de alto CPC:</strong> Investiga con Keyword Planner antes de escribir cada artículo.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>Todos los formatos activos:</strong> Más competencia en subasta = mayor CPC por impresión.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /optimizacion -->
+
+        <!-- PANEL: TRÁFICO -->
+        <div id="panel-trafico" class="guide-panel">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🚦</div>
+              <h3 class="guide-card-title">Fuentes de tráfico por rentabilidad</h3>
+            </div>
+            <div class="guide-card-body">
+              <p>No todo el tráfico vale igual. El usuario que llega por búsqueda orgánica está en modo "busco información", lo que atrae anunciantes con CPC más alto.</p>
+              <div class="traffic-bars" style="margin-top:1.25rem">
+                <div class="tbar-row"><span class="tbar-label">SEO Orgánico</span><div class="tbar-track"><div class="tbar-fill" style="width:95%"></div></div><span class="tbar-val">RPM $4–$20+</span></div>
+                <div class="tbar-row"><span class="tbar-label">Email marketing</span><div class="tbar-track"><div class="tbar-fill" style="width:70%"></div></div><span class="tbar-val">RPM $3–$10</span></div>
+                <div class="tbar-row"><span class="tbar-label">Tráfico directo</span><div class="tbar-track"><div class="tbar-fill" style="width:60%"></div></div><span class="tbar-val">RPM $2–$8</span></div>
+                <div class="tbar-row"><span class="tbar-label">Redes sociales</span><div class="tbar-track"><div class="tbar-fill" style="width:28%;background:var(--danger)"></div></div><span class="tbar-val">RPM $0.5–$3</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🚀</div>
+              <h3 class="guide-card-title">Estrategias para escalar ingresos</h3>
+            </div>
+            <div class="guide-card-body">
+              <div class="two-col">
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Clústeres temáticos</div><ul><li>1 artículo pilar central</li><li>8-12 artículos de soporte</li><li>Mejor CPC contextual</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Actualizar contenido</div><ul><li>Posiciones 4-15 en GSC</li><li>Mayor ROI que crear nuevo</li><li>Revisión cada 6 meses</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Publicación constante</div><ul><li>2-3 artículos por semana</li><li>Señal de calidad para Google</li><li>Mejor que publicar en ráfagas</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Versión en inglés</div><ul><li>CPC EEUU/UK 3-10× mayor</li><li>Multiplica los ingresos</li><li>Aplica si el nicho lo permite</li></ul></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /trafico -->
+
+        <!-- PANEL: POLÍTICAS -->
+        <div id="panel-politicas" class="guide-panel">
+          <div class="callout warn" style="margin-bottom:1.5rem">
+            <strong>⚠ Sección crítica — Lee con atención</strong>
+            Una violación grave puede resultar en baneo PERMANENTE. El proceso de apelación tiene baja tasa de éxito. El cumplimiento no es opcional.
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🛡️</div>
+              <h3 class="guide-card-title">Políticas fundamentales</h3>
+            </div>
+            <div class="guide-card-body">
+              <ul class="checklist">
+                <li><span class="check-ico warn">✗</span><span><strong>Tráfico inválido:</strong> NUNCA hagas clic en tus propios anuncios. Ni desde otra IP, VPN ni dispositivo diferente.</span></li>
+                <li><span class="check-ico warn">✗</span><span><strong>Pedir clics:</strong> Prohibido poner flechas, textos o cualquier elemento que dirija a los anuncios.</span></li>
+                <li><span class="check-ico warn">✗</span><span><strong>Clics accidentales inducidos:</strong> No coloques botones o imágenes junto a anuncios. Los clics accidentales son tráfico inválido.</span></li>
+                <li><span class="check-ico warn">✗</span><span><strong>Contenido prohibido:</strong> Sin adultos, violencia, drogas, armas, piratería, discurso de odio.</span></li>
+                <li><span class="check-ico warn">✗</span><span><strong>Sitios MFA:</strong> Contenido copiado o generado en masa solo para mostrar anuncios. Google los detecta y suspende.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>CTR saludable:</strong> Mantén entre 0.5% y 3%. Un CTR de +8% activa revisión manual inmediata.</span></li>
+                <li><span class="check-ico ok">✓</span><span><strong>Etiqueta visible:</strong> Todos los anuncios deben estar identificados como "Publicidad" o "Anuncio".</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🔒</div>
+              <h3 class="guide-card-title">Protección proactiva</h3>
+            </div>
+            <div class="guide-card-body">
+              <ul class="checklist">
+                <li><span class="check-ico ok">✓</span><span>Instala Cloudflare (gratuito) — filtra el 90% del tráfico bot automáticamente</span></li>
+                <li><span class="check-ico ok">✓</span><span>Revisa el Informe de Tráfico Inválido en AdSense cada mes</span></li>
+                <li><span class="check-ico ok">✓</span><span>Pico anómalo de clics → bloquea anuncios temporalmente e investiga la fuente</span></li>
+                <li><span class="check-ico ok">✓</span><span>Verifica las políticas de AdSense cada trimestre — se actualizan con frecuencia</span></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /politicas -->
+
+        <!-- PANEL: AVANZADO -->
+        <div id="panel-avanzado" class="guide-panel">
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">🧪</div>
+              <h3 class="guide-card-title">A/B Testing en AdSense</h3>
+            </div>
+            <div class="guide-card-body">
+              <ul class="checklist">
+                <li><span class="check-ico ok">✓</span><span>Prueba <strong>solo una variable</strong> por experimento: posición, formato o número</span></li>
+                <li><span class="check-ico ok">✓</span><span>Duración mínima: <strong>2 semanas</strong> para significancia estadística</span></li>
+                <li><span class="check-ico ok">✓</span><span>Tráfico mínimo: <strong>5.000 páginas vistas/día</strong> para datos fiables</span></li>
+                <li><span class="check-ico ok">✓</span><span>Prioriza tus <strong>10 páginas con más tráfico</strong> — mayor impacto</span></li>
+                <li><span class="check-ico warn">✗</span><span>Nunca cambies múltiples variables simultáneamente</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="guide-card-header">
+              <div class="guide-card-icon" aria-hidden="true">📱</div>
+              <h3 class="guide-card-title">Mobile vs Desktop + Stack de monetización</h3>
+            </div>
+            <div class="guide-card-body">
+              <div class="two-col">
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Desktop</div><ul><li>CPC 20-40% mayor</li><li>Formatos: 300×600, 728×90</li><li>Sidebar sticky muy efectivo</li></ul></div>
+                <div class="mini-card"><div class="mini-card-title" style="color:var(--navy)">Móvil</div><ul><li>60-70% del tráfico total</li><li>Sticky footer obligatorio</li><li>Velocidad crítica (&lt;3s)</li></ul></div>
+              </div>
+              <div class="callout info" style="margin-top:1rem">
+                <strong>Stack de monetización complementaria</strong>
+                AdSense + Marketing de afiliados + Productos digitales = ingresos diversificados sin conflicto de políticas.
+              </div>
+            </div>
+          </div>
+        </div><!-- /avanzado -->
+
+      </div><!-- /guide-main -->
+
+      <!-- SIDEBAR -->
+      <aside class="guide-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-header"><div class="sidebar-card-title">Navegación rápida</div></div>
+          <div class="sidebar-card-body">
+            <ul class="sidebar-nav">
+              <li><a href="javascript:void(0)" onclick="switchTab('fundamentos')"><span>💡</span> Fundamentos</a></li>
+              <li><a href="javascript:void(0)" onclick="switchTab('preparacion')"><span>🌐</span> Preparación</a></li>
+              <li><a href="javascript:void(0)" onclick="switchTab('optimizacion')"><span>📈</span> Optimización</a></li>
+              <li><a href="javascript:void(0)" onclick="switchTab('trafico')"><span>🚦</span> Tráfico</a></li>
+              <li><a href="javascript:void(0)" onclick="switchTab('politicas')"><span>⚠️</span> Políticas</a></li>
+              <li><a href="javascript:void(0)" onclick="switchTab('avanzado')"><span>🧪</span> Avanzado</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SIDEBAR AD 300×250
+             DECISIÓN: Posición de mayor CTR en sidebar.
+             Usuario leyendo la guía = alta atención. -->
+        <div class="sidebar-card" aria-label="Espacio publicitario">
+          <div class="sidebar-card-header"><div class="sidebar-card-title" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase">Publicidad</div></div>
+          <!--
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+          -->
+          <div class="ad-slot ad-300x250" style="margin:0;border:none;border-top:1px dashed var(--border);border-radius:0 0 var(--radius-lg) var(--radius-lg)">
+            <span class="ad-dims">300×250 Rectangle</span>
+            <span class="ad-hint">Sidebar — Alta impresión durante lectura</span>
+          </div>
+        </div>
+
+        <!-- SIDEBAR AD 300×600
+             DECISIÓN: Half-page = formato premium, mayor CPM. -->
+        <div class="sidebar-card" aria-label="Espacio publicitario">
+          <div class="sidebar-card-header"><div class="sidebar-card-title" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase">Publicidad</div></div>
+          <!--
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+                 data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+          -->
+          <div class="ad-slot ad-300x600" style="margin:0;border:none;border-top:1px dashed var(--border);border-radius:0 0 var(--radius-lg) var(--radius-lg)">
+            <span class="ad-dims">300×600 Half Page</span>
+            <span class="ad-hint">Formato premium — Mayor CPM en toda la red</span>
+          </div>
+        </div>
+      </aside>
+    </div><!-- /guide-layout -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     AD RESPONSIVE — ENTRE GUIDE Y MÉTRICAS
+     DECISIÓN: Transición de sección = alta atención.
+════════════════════════════════════════════════════ -->
+<div class="ad-zone-top" aria-label="Espacio publicitario">
+  <div class="container">
+    <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);text-align:center;margin-bottom:0.5rem">Publicidad</div>
+    <!--
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto" data-full-width-responsive="true"></ins>
+    -->
+    <div class="ad-slot ad-responsive ad-center" style="max-width:728px">
+      <span class="ad-dims">Anuncio responsivo</span>
+      <span class="ad-hint">Desktop: 728×90 | Móvil: 320×50 | Tablet: 468×60</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     METRICS SECTION
+════════════════════════════════════════════════════ -->
+<section id="metrics" class="section" aria-labelledby="metrics-title">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:3rem">
+      <div class="section-label">Métricas clave</div>
+      <h2 class="section-title" id="metrics-title">Entiende los números que mueven tu negocio</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);margin:0 auto">6 métricas que determinan el éxito de tu estrategia AdSense.</p>
+    </div>
+    <div class="metrics-grid">
+      <article class="metric-card reveal reveal-delay-1"><div class="metric-card-name">RPM</div><div class="metric-card-value">$5–$20</div><p class="metric-card-desc">Tu KPI principal. Fórmula: (Ingresos ÷ Páginas) × 1.000</p><div class="metric-card-range"><div class="range-label">Rango saludable, nichos medios</div><div class="range-bar"><div class="range-fill" style="width:65%"></div></div></div></article>
+      <article class="metric-card reveal reveal-delay-1"><div class="metric-card-name">CTR</div><div class="metric-card-value">0.5–3%</div><p class="metric-card-desc">% de impresiones que generan clic. Más del 5% puede activar alertas.</p><div class="metric-card-range"><div class="range-label">Zona de seguridad</div><div class="range-bar"><div class="range-fill" style="width:45%"></div></div></div></article>
+      <article class="metric-card reveal reveal-delay-2"><div class="metric-card-name">CPC</div><div class="metric-card-value">$0.05–$15</div><p class="metric-card-desc">Lo que cobras por cada clic. Depende 100% del nicho elegido.</p><div class="metric-card-range"><div class="range-label">CPC en nicho financiero</div><div class="range-bar"><div class="range-fill" style="width:90%"></div></div></div></article>
+      <article class="metric-card reveal reveal-delay-2"><div class="metric-card-name">Viewability</div><div class="metric-card-value">&gt;70%</div><p class="metric-card-desc">% de anuncios vistos 1 segundo. Google premia alta viewability.</p><div class="metric-card-range"><div class="range-label">Objetivo mínimo</div><div class="range-bar"><div class="range-fill" style="width:70%"></div></div></div></article>
+      <article class="metric-card reveal reveal-delay-3"><div class="metric-card-name">Coverage</div><div class="metric-card-value">&gt;90%</div><p class="metric-card-desc">% de solicitudes con respuesta. Bajo coverage = problema de demanda.</p><div class="metric-card-range"><div class="range-label">Objetivo de cobertura</div><div class="range-bar"><div class="range-fill" style="width:90%"></div></div></div></article>
+      <article class="metric-card reveal reveal-delay-3"><div class="metric-card-name">Active View CPM</div><div class="metric-card-value">$1–$8</div><p class="metric-card-desc">CPM de impresiones realmente visibles. Mejor indicador de demanda real.</p><div class="metric-card-range"><div class="range-label">En nicho tecnológico</div><div class="range-bar"><div class="range-fill" style="width:55%"></div></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════ -->
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="section-label">Contacto</div>
+        <h2 class="contact-info-title" id="contact-title">¿Tienes dudas sobre monetización?</h2>
+        <p class="contact-info-text">Escríbeme. Respondo consultas sobre AdSense, monetización web y estrategias de contenido en menos de 24 horas en días laborables.</p>
+        <div class="contact-badges">
+          <span class="badge badge-green">Respuesta en &lt;24h</span>
+          <span class="badge badge-navy">Sin SPAM</span>
+          <span class="badge badge-gold">Consulta gratuita</span>
+        </div>
+        <div style="margin-top:2rem">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--navy);margin-bottom:0.75rem">También útil:</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem">
+            <a href="#guide" style="font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">→</span> Guía completa de AdSense</a>
+            <a href="#metrics" style="font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">→</span> Entender métricas y RPM</a>
+            <a href="javascript:void(0)" onclick="openModal('modal-privacidad')" style="font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:6px"><span style="color:var(--gold)">→</span> Política de privacidad</a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="contact-card">
+          <form id="contactForm" novalidate aria-label="Formulario de contacto">
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="bot-field" style="position:absolute;left:-9999px;opacity:0" tabindex="-1" aria-hidden="true">
+            <div class="form-group">
+              <label for="fname">Nombre completo *</label>
+              <input type="text" id="fname" name="name" class="form-control" placeholder="Tu nombre completo" required minlength="2" autocomplete="name">
+              <span class="field-error" id="fname-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="femail">Correo electrónico *</label>
+              <input type="email" id="femail" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email">
+              <span class="field-error" id="femail-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Asunto</label>
+              <input type="text" id="fsubject" name="subject" class="form-control" placeholder="¿Sobre qué quieres consultar?">
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Mensaje *</label>
+              <textarea id="fmessage" name="message" class="form-control" placeholder="Cuéntame tu proyecto o duda..." required minlength="20" rows="5"></textarea>
+              <span class="field-error" id="fmessage-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div style="margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px">
+              <input type="checkbox" id="fprivacy" required style="margin-top:3px;accent-color:var(--navy)">
+              <label for="fprivacy" style="font-size:0.85rem;color:var(--text-muted);cursor:pointer">
+                He leído y acepto la <a href="javascript:void(0)" onclick="openModal('modal-privacidad')" style="color:var(--gold);text-decoration:underline">Política de Privacidad</a> *
+              </label>
+            </div>
+            <span class="field-error" id="fprivacy-error" role="alert" aria-live="polite"></span>
+            <button type="submit" class="btn-submit" id="submitBtn">Enviar mensaje</button>
+            <div id="form-success" role="alert">
+              <strong>✓ ¡Mensaje enviado!</strong>
+              Te responderé en menos de 24 horas. Gracias por tu interés.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><div class="logo-icon" style="width:28px;height:28px;font-size:12px" aria-hidden="true">💡</div>AdSense<span>Pro</span></div>
+        <p class="footer-desc">Guía profesional sobre monetización web con Google AdSense. Información actualizada, estrategias probadas y cumplimiento estricto de políticas.</p>
+        <p style="font-size:0.78rem;margin-top:1rem;color:rgba(255,255,255,0.3)">Este sitio usa cookies de análisis y publicidad de terceros (Google AdSense).</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Guía</div>
+        <ul class="footer-links">
+          <li><a href="#intro">Fundamentos</a></li>
+          <li><a href="javascript:void(0)" onclick="switchTab('preparacion');document.getElementById('guide').scrollIntoView()">Preparación</a></li>
+          <li><a href="javascript:void(0)" onclick="switchTab('optimizacion');document.getElementById('guide').scrollIntoView()">Optimización</a></li>
+          <li><a href="javascript:void(0)" onclick="switchTab('politicas');document.getElementById('guide').scrollIntoView()">Políticas</a></li>
+          <li><a href="#metrics">Métricas</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="javascript:void(0)" onclick="openModal('modal-privacidad')">Política de privacidad</a></li>
+          <li><a href="javascript:void(0)" onclick="openModal('modal-cookies')">Política de cookies</a></li>
+          <li><a href="javascript:void(0)" onclick="openModal('modal-legal')">Aviso legal</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-text">© 2025 AdSense Pro Guide. Todos los derechos reservados. Google AdSense™ es marca registrada de Google LLC.</p>
+      <div class="footer-legal-links">
+        <a href="javascript:void(0)" onclick="openModal('modal-privacidad')">Privacidad</a>
+        <a href="javascript:void(0)" onclick="openModal('modal-cookies')">Cookies</a>
+        <a href="javascript:void(0)" onclick="openModal('modal-legal')">Aviso legal</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════
+     COOKIE BANNER
+     DECISIÓN: AdSense se carga SOLO tras consentimiento.
+     Cumple RGPD/ePrivacy.
+════════════════════════════════════════════════════ -->
+<div id="cookieBanner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+  <div class="cookie-inner">
+    <div class="cookie-icon" aria-hidden="true">🍪</div>
+    <div class="cookie-text">
+      <p id="cookie-desc"><strong id="cookie-title">Usamos cookies</strong> — propias y de terceros (Google AdSense, Analytics) para mejorar la experiencia y mostrar publicidad relevante.
+      <span class="cookie-link" onclick="openModal('modal-cookies')">Más información</span></p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-accept" onclick="acceptCookies()">Aceptar todas</button>
+      <button class="cookie-reject" onclick="rejectCookies()">Solo esenciales</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     MODALS: POLÍTICA DE PRIVACIDAD
+════════════════════════════════════════════════════ -->
+<div id="modal-privacidad" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="mp-title" onclick="closeModalOnBg(event,'modal-privacidad')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title" id="mp-title">Política de Privacidad</h2>
+      <button class="modal-close" onclick="closeModal('modal-privacidad')" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h3>1. Responsable del tratamiento</h3>
+      <p>AdSense Pro Guide — [Tu nombre o razón social], [Tu dirección]. Email de contacto: [tu@email.com]</p>
+      <h3>2. Datos que recopilamos</h3>
+      <p>Datos proporcionados voluntariamente a través del formulario de contacto: nombre, email y mensaje. Google AdSense puede recopilar datos de navegación para personalizar anuncios.</p>
+      <h3>3. Finalidad del tratamiento</h3>
+      <p>Los datos del formulario se usan exclusivamente para responder a tu consulta. No se venden ni comparten con terceros, salvo procesadores técnicos de email.</p>
+      <h3>4. Google AdSense y cookies de terceros</h3>
+      <p>Este sitio participa en Google AdSense. Google usa cookies (DSID, IDE) para mostrar anuncios personalizados. Puedes optar por no recibirlos en <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--gold)">google.com/settings/ads</a>.</p>
+      <h3>5. Derechos del usuario</h3>
+      <p>Tienes derecho a acceso, rectificación, supresión y portabilidad. Escríbenos a [tu@email.com]. También puedes reclamar ante la AEPD (agpd.es).</p>
+      <h3>6. Conservación de datos</h3>
+      <p>Los datos del formulario se conservan el tiempo necesario para responder tu consulta y hasta 1 año adicional por motivos legales.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: POLÍTICA DE COOKIES -->
+<div id="modal-cookies" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="mc-title" onclick="closeModalOnBg(event,'modal-cookies')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title" id="mc-title">Política de Cookies</h2>
+      <button class="modal-close" onclick="closeModal('modal-cookies')" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h3>¿Qué son las cookies?</h3>
+      <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo para recordar preferencias y recopilar información analítica.</p>
+      <h3>Cookies que utilizamos</h3>
+      <p><strong>Esenciales:</strong> Necesarias para el funcionamiento del sitio. No requieren consentimiento. Ejemplo: consentimiento de cookies.</p>
+      <p><strong>Análisis (Google Analytics):</strong> Ayudan a entender cómo se usa el sitio. Solo se activan con tu consentimiento. Duración: 2 años.</p>
+      <p><strong>Publicidad (Google AdSense):</strong> Google usa cookies para mostrar anuncios relevantes (DSID, IDE, test_cookie). Solo con tu consentimiento.</p>
+      <h3>Control de cookies</h3>
+      <p>Puedes gestionar las cookies en la configuración de tu navegador. Firefox: Preferencias → Privacidad. Chrome: Configuración → Privacidad → Cookies.</p>
+      <h3>Opt-out de publicidad personalizada</h3>
+      <p>Visita <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--gold)">google.com/settings/ads</a> para desactivar la publicidad personalizada de Google.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: AVISO LEGAL -->
+<div id="modal-legal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ml-title" onclick="closeModalOnBg(event,'modal-legal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title" id="ml-title">Aviso Legal</h2>
+      <button class="modal-close" onclick="closeModal('modal-legal')" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h3>Titular del sitio</h3>
+      <p>[Tu nombre completo o razón social], [NIF/CIF], domicilio: [dirección completa], email: [tu@email.com]</p>
+      <h3>Objeto</h3>
+      <p>Este sitio web proporciona información educativa sobre monetización web con Google AdSense. No constituye asesoría legal, financiera ni garantía de resultados económicos.</p>
+      <h3>Propiedad intelectual</h3>
+      <p>Todos los contenidos de este sitio (textos, imágenes, diseño) son propiedad del titular o cuentan con las licencias correspondientes. Se prohíbe su reproducción sin autorización expresa.</p>
+      <h3>Exclusión de responsabilidad</h3>
+      <p>La información es orientativa. Los resultados con Google AdSense dependen de múltiples factores externos. No nos responsabilizamos de decisiones tomadas con base en esta guía.</p>
+      <h3>Ley aplicable</h3>
+      <p>Este aviso legal se rige por la legislación española. Controversias sometidas a los tribunales de [tu ciudad].</p>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll to top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver al inicio">↑</button>
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════ -->
+<script>
+  /* ═══════════════════════════════════════════════
+     NAV
+  ═══════════════════════════════════════════════ */
+  const nav = document.getElementById('nav');
+  const navToggle = document.getElementById('navToggle');
+  const navMobile = document.getElementById('navMobile');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  navToggle.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navMobile.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => { navMobile.classList.remove('open'); navToggle.setAttribute('aria-expanded', false); })
+  );
+
+  /* ═══════════════════════════════════════════════
+     GUIDE TABS
+  ═══════════════════════════════════════════════ */
+  function switchTab(name) {
+    document.querySelectorAll('.guide-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-' + name);
+    if (panel) panel.classList.add('active');
+
+    document.querySelectorAll('.guide-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    const tab = document.getElementById('tab-' + name);
+    if (tab) { tab.classList.add('active'); tab.setAttribute('aria-selected', 'true'); }
+
+    // In-content ad solo visible en fundamentos
+    const ad = document.getElementById('inContentAd1');
+    if (ad) ad.style.display = name === 'fundamentos' ? 'block' : 'none';
+  }
+
+  /* ═══════════════════════════════════════════════
+     CONTACT FORM VALIDATION
+  ═══════════════════════════════════════════════ */
+  const formValidators = {
+    fname: {
+      el: () => document.getElementById('fname'),
+      err: () => document.getElementById('fname-error'),
+      check: (v) => !v.trim() ? 'El nombre es obligatorio.' : v.trim().length < 2 ? 'Mínimo 2 caracteres.' : ''
+    },
+    femail: {
+      el: () => document.getElementById('femail'),
+      err: () => document.getElementById('femail-error'),
+      check: (v) => !v.trim() ? 'El email es obligatorio.' : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? 'Email no válido.' : ''
+    },
+    fmessage: {
+      el: () => document.getElementById('fmessage'),
+      err: () => document.getElementById('fmessage-error'),
+      check: (v) => !v.trim() ? 'El mensaje es obligatorio.' : v.trim().length < 20 ? 'Mínimo 20 caracteres.' : ''
+    },
+    fprivacy: {
+      el: () => document.getElementById('fprivacy'),
+      err: () => document.getElementById('fprivacy-error'),
+      check: (v, el) => !el.checked ? 'Debes aceptar la política de privacidad.' : ''
+    }
+  };
+
+  function validateField(key) {
+    const cfg = formValidators[key];
+    const el = cfg.el(); const errEl = cfg.err();
+    const msg = cfg.check(el.value, el);
+    errEl.textContent = msg;
+    el.classList.toggle('invalid', !!msg);
+    return !msg;
+  }
+
+  Object.keys(formValidators).forEach(key => {
+    const el = formValidators[key].el();
+    if (el) el.addEventListener('blur', () => validateField(key));
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target;
+    // Honeypot
+    if (form.elements['bot-field'] && form.elements['bot-field'].value) return;
+    // Validate
+    const valid = Object.keys(formValidators).every(k => validateField(k));
+    if (!valid) return;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    setTimeout(() => {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      /*
+       * PRODUCCIÓN: Reemplaza setTimeout con fetch a Formspree/EmailJS:
+       * fetch('https://formspree.io/f/TU_ID', {
+       *   method: 'POST',
+       *   headers: { 'Content-Type': 'application/json' },
+       *   body: JSON.stringify({ name: ..., email: ..., message: ... })
+       * })
+       */
+    }, 900);
+  });
+
+  /* ═══════════════════════════════════════════════
+     COOKIE BANNER
+     DECISIÓN: AdSense se carga dinámicamente SOLO
+     tras consentimiento explícito del usuario.
+  ═══════════════════════════════════════════════ */
+  const COOKIE_KEY = 'adsensepro_consent';
+  const banner = document.getElementById('cookieBanner');
+
+  function initCookies() {
+    const stored = localStorage.getItem(COOKIE_KEY);
+    if (!stored) { setTimeout(() => banner.classList.add('visible'), 900); }
+    else if (stored === 'accepted') { loadThirdParty(); }
+  }
+
+  function loadThirdParty() {
+    /*
+     * Carga Google AdSense dinámicamente con consentimiento.
+     * Descomenta y reemplaza con tu Publisher ID:
+     *
+     * const s = document.createElement('script');
+     * s.async = true;
+     * s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+     * s.setAttribute('data-ad-client', 'ca-pub-XXXXXXXXXXXXXXXXX');
+     * document.head.appendChild(s);
+     */
+    console.log('[AdSense] Consentimiento aceptado — cargando publicidad...');
+  }
+
+  function acceptCookies() {
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    banner.classList.remove('visible');
+    loadThirdParty();
+  }
+
+  function rejectCookies() {
+    localStorage.setItem(COOKIE_KEY, 'rejected');
+    banner.classList.remove('visible');
+  }
+
+  /* ═══════════════════════════════════════════════
+     MODALS
+  ═══════════════════════════════════════════════ */
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  }
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  function closeModalOnBg(e, id) { if (e.target.id === id) closeModal(id); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+    }
+  });
+
+  /* ═══════════════════════════════════════════════
+     SCROLL REVEAL
+  ═══════════════════════════════════════════════ */
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+  .observe && document.querySelectorAll('.reveal').forEach(el =>
+    new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 }).observe(el)
+  );
+
+  /* ═══════════════════════════════════════════════
+     INIT
+  ═══════════════════════════════════════════════ */
+  document.addEventListener('DOMContentLoaded', () => {
+    initCookies();
+    switchTab('fundamentos');
+    // Init all reveal elements
+    document.querySelectorAll('.reveal').forEach(el => {
+      const obs = new IntersectionObserver((ents) => {
+        ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      obs.observe(el);
+    });
+  });
+</script>
+
+</body>
+</html>
